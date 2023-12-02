@@ -5,7 +5,8 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 
 contract TRC721NFT is ERC721Enumerable {
     // Mapping from token ID to Telegram alias
-    mapping(uint256 => string) private _tokenTelegramAliases;
+    mapping(uint256 => string) private _tokenToAlias;
+    mapping(string => uint256) private _aliasToToken;
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
 
@@ -17,17 +18,15 @@ contract TRC721NFT is ERC721Enumerable {
         _setTokenTelegramAlias(newTokenId, telegramAlias);
     }
 
-    function verifyOwnerWithAlias(address owner, string memory telegramAlias) public view returns (bool) {
-        (bool found, uint256 tokenId) = _getTokenIdByOwner(owner);
-        if (!found) return false; // Owner does not have any NFTs
-        return keccak256(abi.encodePacked(_tokenTelegramAliases[tokenId])) == keccak256(abi.encodePacked(telegramAlias));
+    function verifyOwnership(string memory telegramAlias) public view returns (bool) {
+        return _aliasToToken[telegramAlias] > 0;
     }
 
     function _getTokenIdByOwner(address owner) private view returns (bool, uint256) {
         uint256 balance = balanceOf(owner);
         for(uint256 i = 0; i < balance; i++){
             uint256 tokenId = tokenOfOwnerByIndex(owner, i);
-            if (bytes(_tokenTelegramAliases[tokenId]).length > 0) {
+            if (bytes(_tokenToAlias[tokenId]).length > 0) {
                 return (true, tokenId);
             }
         }
@@ -35,7 +34,8 @@ contract TRC721NFT is ERC721Enumerable {
     }
 
     function _setTokenTelegramAlias(uint256 tokenId, string memory telegramAlias) private {
-        _tokenTelegramAliases[tokenId] = telegramAlias;
+        _tokenToAlias[tokenId] = telegramAlias;
+        _aliasToToken[telegramAlias] = tokenId;
     }
 
     function updateTelegramAlias(address owner, string memory newTelegramAlias) public {

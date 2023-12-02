@@ -19,27 +19,21 @@ describe("TRC721NFT Contract", function () {
             await trc721nft.mintNFT(addr1.address, "Addr1Alias");
             expect(await trc721nft.balanceOf(addr1.address)).to.equal(1);
         });
-
-        // Add more test cases for minting
     });
 
     describe("Verify Owner with Alias", function () {
         it("Should return true for the correct owner and alias", async function () {
             await trc721nft.mintNFT(addr1.address, "Addr1Alias");
-            expect(await trc721nft.verifyOwnerWithAlias(addr1.address, "Addr1Alias")).to.be.true;
+            expect(await trc721nft.verifyOwnership("Addr1Alias")).to.be.true;
         });
-
-        // Add more test cases for verifying owner with alias
     });
 
     describe("Update Telegram Alias", function () {
         it("Should update the alias for the token owner", async function () {
             await trc721nft.mintNFT(addr1.address, "Addr1Alias");
             await trc721nft.connect(addr1).updateTelegramAlias(addr1.address, "NewAlias");
-            expect(await trc721nft.verifyOwnerWithAlias(addr1.address, "NewAlias")).to.be.true;
+            expect(await trc721nft.verifyOwnership("NewAlias")).to.be.true;
         });
-
-        // Add more test cases for updating telegram alias
     });
 
 });
