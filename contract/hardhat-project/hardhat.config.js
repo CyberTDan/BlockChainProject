@@ -4,8 +4,8 @@ require("@nomicfoundation/hardhat-toolbox");
 module.exports = {
   networks: {
     ganache: {
-      url: "http://127.0.0.1:7545", // Default URL for Ganache
-      accounts: { mnemonic: "runway hat fog kangaroo brown clerk fish guess elder obtain category wasp" } // Use the Ganache mnemonic
+      url: "http://ganache:8545", // Default URL for Ganache
+      accounts: { mnemonic: "shoot zoo ozone illegal picnic burger level purse excite around body mimic" } // Use the Ganache mnemonic
       // You can also specify specific accounts using their private keys
       // accounts: ["0x...", "0x...", ...]
     },
