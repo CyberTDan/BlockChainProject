@@ -1,0 +1,29 @@
+@startuml
+
+actor User as user
+participant Frontend as frontend
+participant Backend as backend
+participant Bot as bot
+
+== NFT Purchase Procedure ==
+
+user -> frontend: buy NFT
+return success
+
+user -> frontend: set TG alias
+
+note left user: user can set their\nTG alias by proving\n\
+NFT ownership
+
+frontend -> backend: proveOwnership(user)
+return result
+
+alt success
+frontend -> backend: setOwnerAlias(alias)
+end
+
+backend -> frontend: result
+
+frontend -> user: result
+
+@enduml
