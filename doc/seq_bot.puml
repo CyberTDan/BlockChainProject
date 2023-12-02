@@ -1,0 +1,19 @@
+@startuml
+
+participant User as user
+participant Bot as bot
+participant Backend as backend
+
+== Bot access ==
+
+user -> bot: /start
+bot -> backend: isUserAuthorized(alias)
+return result
+
+alt result == true
+bot -> user: Allow communication
+else result == false
+bot -> user: Ignore messages
+end
+
+@enduml
