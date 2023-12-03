@@ -6,6 +6,6 @@ services:
     ports:
       - "8545:8545"
   hardhat:
-    image: trihlebdv/contract
+    build: .
     depends_on:
       - ganache
