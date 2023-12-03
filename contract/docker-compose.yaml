@@ -1,11 +1,16 @@
 version: '3'
 services:
   ganache:
-    image: trufflesuite/ganache-cli
-    command: ganache-cli --host 0.0.0.0 --mnemonic "${MNEMONIC}"
+    build: 
+      context: .
+      dockerfile: ./GanacheDocker
     ports:
       - "8545:8545"
+    command: ganache-cli --host 0.0.0.0 --mnemonic "${MNEMONIC}"
+    
   hardhat:
-    build: .
+    build: 
+      context: .
+      dockerfile: ./ContractDocker
     depends_on:
       - ganache
