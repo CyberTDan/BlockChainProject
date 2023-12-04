@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Bot access store</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/4.2.2/web3.min.js"
+        integrity="sha512-YD0p/mrfISfNjG4WS/8Dx1h6hZx0/IgCFJfQR8lSXf/y29Jy+JcZj1s65/Ar22xBwvK8xe1u1BQ/w2E2Edr22Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+    
+    <!-- <script src="scripts/contract.js"></script> -->
+
+</head>
+
+<body>
+
+    <div class="content">
+
+        <div class="d-flex flex-column mt-2 align-items-center">
+            <button id="enableEthereumButton" class="btn btn-primary">Connect Metamask</button>
+            <input id="tgInputForm" class="mt-2" type="email" placeholder="@your_telegram_alias">
+            <button id="buyButton" class="btn btn-primary mt-2">Buy</button>
+
+            <h2>Account: <span class="showAccount"></span></h2>
+        </div>
+
+    </div>
+
+    </div>
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+            <div class="col-md-4 d-flex align-items-center">
+                <span class="mb-3 mb-md-0 text-muted">© 2023 Marketplace</span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- <script src="server.js"></script> -->
+
+    <script>
+        const tgInputForm = document.querySelector("#tgInputForm")
+        const buyButton = document.querySelector("#buyButton")
+
+        buyButton.addEventListener("click", () => {
+            mintNFT();
+        });
+    </script>
+
+    <script src="scripts/metamask.js"></script>
+
+</body>
+
+</html>
