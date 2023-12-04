@@ -1,8 +1,9 @@
 # node:alpine will be our base image to create this image
-FROM node:alpine
+FROM node:21.3.0-slim
 # Set the /app directory as working directory
 WORKDIR /app
 # Install ganache-cli globally
 RUN npm install --global ganache
 # Set the default command for the image
-CMD ["ganache-cli", "-h", "0.0.0.0"]
+# CMD ["ganache-cli", "-h", "0.0.0.0"]
+CMD ["node -v"]
