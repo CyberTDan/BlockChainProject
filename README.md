@@ -47,7 +47,16 @@ noder server.js
 
 ### Bot
 
+Firstly, `cd` into `bot` and install all dependencies with
+```
+pip3 install -r requirements.txt
+```
+
+You might want to do it in a `venv`
+
 To run the bot, open `bot/bot.py` and replace all `TODO`.
 They include Telegram bot token and contract address.
 
 You might also want to change the address of your Ethereum blockchain.
+
+Then run `python bot.py`
