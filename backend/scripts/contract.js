@@ -42,8 +42,11 @@ async function mintNFT(telegram_alias) {
                 console.log(`Token ID at index ${i}:`, tokenId);
             }
         }
+
+        return true;
     } catch (error) {
         console.error('Error in transaction:', error);
+        return false;
     }
 }
 
